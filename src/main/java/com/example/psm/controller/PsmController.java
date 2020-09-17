@@ -15,7 +15,7 @@ public class PsmController {
 
     @RequestMapping(value = "demo")
     public String demo(){
-
+        System.out.println("恭喜进入控制层！！！！！");
         return "第一个springboot项目";
     }
 
