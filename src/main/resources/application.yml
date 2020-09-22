@@ -9,7 +9,4 @@ spring:
     password: 123456
 
 
-authorization:
-  uri: http://localhost:${server.port}
-  client-id: client
-  client-secret: 123456
+
