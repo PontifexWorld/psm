@@ -2,9 +2,9 @@ package com.example.psm.dao;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.psm.domain.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.security.core.userdetails.User;
 
 import java.util.List;
 

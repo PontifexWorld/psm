@@ -40,17 +40,20 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
+        System.out.println("authenticationManagerBean----------------");
         return super.authenticationManagerBean();
     }
 
     // 静态资源不拦截配置
     @Override
     public void configure(WebSecurity web) {
+        System.out.println("configure---web-------------");
         web.ignoring().antMatchers("/static/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        System.out.println("configure---http----------");
         //  http.csrf();
         http.csrf().disable();
         // session 无状态 不使用 基于token访问

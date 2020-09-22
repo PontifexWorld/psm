@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020-09-11 12:42
  **/
 @RestController
-@RequestMapping("psm/app")
+@RequestMapping("api/app")
 public class PsmController {
 
 
@@ -33,7 +33,7 @@ public class PsmController {
     @GetMapping("/order/{id}")
     public String getOrder(@PathVariable String id) {
         //for debug
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return "order id : " + id;
     }
 

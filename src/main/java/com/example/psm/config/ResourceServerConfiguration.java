@@ -10,11 +10,12 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
 import javax.annotation.Resource;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-
 
     private static final String DEMO_RESOURCE_ID = "*";
 
@@ -37,6 +38,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        System.out.println("ResourceServerConfiguration----configure-");
 
         http.requestMatchers()
                 .antMatchers("/api/**")
