@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.lesscode.dao.LoginLogDao">
+   <sql id="tableName">MS_AUTH_LOGIN_LOG</sql>
+   <sql id="baseColumnList">
+         ID,
+         LOGIN_USERNAME,
+         LOGIN_IP,
+         FILTER_URL,
+         LOGIN_STATUS,
+         CREATE_TIME
+	</sql> 
+	<resultMap id="baseResultMap"
+		type="com.example.lesscode.domain.LoginLogVO">
+       		<result column="ID" property="id"/>
+       		<result column="LOGIN_USERNAME" property="loginUsername"/>
+       		<result column="LOGIN_IP" property="loginIp"/>
+       		<result column="FILTER_URL" property="filterUrl"/>
+       		<result column="LOGIN_STATUS" property="loginStatus"/>
+       		<result column="CREATE_TIME" property="createTime"/>
+	</resultMap>
+     
+     <insert id="save" parameterType="com.example.lesscode.domain.LoginLogVO">
+		INSERT INTO
+		<include refid="tableName" />
+		(
+		<include refid="baseColumnList" />
+		)
+		values 
+           (
+           #{id,jdbcType=VARCHAR}, #{loginUsername,jdbcType=VARCHAR}, #{loginIp,jdbcType=VARCHAR}, #{filterUrl,jdbcType=VARCHAR}, #{loginStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP} 
+           )
+	</insert> 
+     
+
+
+
+</mapper>

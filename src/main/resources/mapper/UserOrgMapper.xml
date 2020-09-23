@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.lesscode.dao.UserOrgDao">
+   <sql id="tableName">MS_AUTH_ORG</sql>
+   <sql id="baseColumnList">
+         ID,
+         NAME,
+         ABBR_NAME,
+         TYPE,
+         PARENT_ID
+	</sql> 
+	<resultMap id="baseResultMap"
+		type="com.example.lesscode.domain.UserOrgVO">
+       		<result column="ID" property="id"/>
+       		<result column="NAME" property="name"/>
+       		<result column="ABBR_NAME" property="abbrName"/>
+       		<result column="TYPE" property="type"/>
+       		<result column="PARENT_ID" property="parentId"/>
+	</resultMap>
+  	<select id="queryOrg" resultMap="baseResultMap">
+		SELECT
+		<include refid="baseColumnList" />
+		FROM
+		<include refid="tableName" />
+		WHERE IS_DELETE != 1
+	</select>
+</mapper>

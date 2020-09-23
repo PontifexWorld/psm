@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.lesscode.dao.SecurityUserDao">
+    <sql id="tableName">MS_AUTH_USER</sql>
+    <sql id="userRoleTableName">MS_AUTH_USER_ROLE</sql>
+    <sql id="orgTableName">MS_AUTH_ORG</sql>
+
+    <sql id="baseColumnList">
+         ID,
+         USERNAME,
+         DISPLAY_NAME,
+         PASSWORD,
+         ORG_ID,
+         EXPIRY_DATE,
+         AVAILABLE_FLAG,
+         PASSWORD_EXPIRY_DATE,
+         SERIAL_INDEX,
+         CREATE_TIME,
+         MODIFY_TIME,
+         PHONE_NO
+	</sql>
+    <resultMap id="baseResultMap" type="com.example.lesscode.domain.SecurityUserVO">
+        <result column="ID" property="id"/>
+        <result column="USERNAME" property="username"/>
+        <result column="DISPLAY_NAME" property="displayName"/>
+        <result column="PASSWORD" property="password"/>
+        <result column="ORG_ID" property="orgId"/>
+        <result column="EXPIRY_DATE" property="expiryDate"/>
+        <result column="AVAILABLE_FLAG" property="availableFlag"/>
+        <result column="PASSWORD_EXPIRY_DATE" property="passwordExpiryDate"/>
+        <result column="SERIAL_INDEX" property="serialIndex"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="MODIFY_TIME" property="modifyTime"/>
+        <result column="PHONE_NO" property="phoneNo"/>
+    </resultMap>
+
+
+    <select id="loadUserByUsername" parameterType="java.lang.String"
+            resultMap="baseResultMap">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="tableName"/>
+        WHERE USERNAME = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryRoleByUserId" parameterType="java.lang.String"
+            resultType="String">
+        SELECT
+        userRole.ROLE_ID
+        FROM
+        <include refid="userRoleTableName"/>
+        userRole
+        <where>
+            userRole.USER_ID = #{userId,jdbcType=VARCHAR}
+        </where>
+    </select>
+    <select id="queryOrg" parameterType="java.lang.String"
+            resultType="map">
+        SELECT
+        userRole.ROLE_ID
+        FROM
+        <include refid="orgTableName"/>
+        userRole
+        <where>
+            userRole.USER_ID = #{userId,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+
+    <select id="loadUserByPhoneNo" parameterType="java.lang.String"
+            resultMap="baseResultMap">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="tableName"/>
+        WHERE PHONE_NO = #{phoneNo,jdbcType=VARCHAR}
+    </select>
+
+
+    <select id="selectClientDetailsByClientId" resultType="com.example.lesscode.domain.AuthClientDetails">
+         SELECT CLIENT_ID "clientId", CLIENT_SECRET "clientSecret", RESOURCE_IDS "resourceIds", SCOPE "scope",
+         AUTHORIZED_GRANT_TYPES "authorizedGrantTypes", WEB_SERVER_REDIRECT_URI "webServerRedirectUri",
+         AUTHORITIES "authorities", ACCESS_TOKEN_VALIDITY "accessTokenValidity",
+         REFRESH_TOKEN_VALIDITY "refreshTokenValidity", ADDITIONAL_INFORMATION "additionalInformation",
+         AUTOAPPROVE "autoapprove"
+        FROM MS_AUTH_CLIENT_DETAILS  WHERE CLIENT_ID = #{clientId}
+    </select>
+</mapper>
