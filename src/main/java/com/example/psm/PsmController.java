@@ -1,5 +1,6 @@
 package com.example.psm;
 
+import com.example.lesscode.util.SecurityUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,13 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "psm")
 public class PsmController {
 
-
     @RequestMapping(value = "demo")
     public String psmTest() {
         System.out.println("进入控制层");
+        System.out.println(SecurityUtils.getUsername());
+        System.out.println(SecurityUtils.getUser());
         return "success";
     }
-
-
 
 }

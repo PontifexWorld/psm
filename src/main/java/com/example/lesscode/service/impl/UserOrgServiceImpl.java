@@ -62,17 +62,5 @@ public class UserOrgServiceImpl implements UserOrgService {
     }
 
 
-/**    @Override public UserOrgVO getOrgTree(UserOrgVO userOrgVO, Map<String, UserOrgVO> orgMap) {
-//获取父级对象
-UserOrgVO parentOrgVO = orgMap.get(userOrgVO.getParentId());
-if (parentOrgVO != null) {
-List<UserOrgVO> children = new ArrayList<UserOrgVO>(1);
-children.add(userOrgVO);
-parentOrgVO.setChildren(children);
-return getOrgTree(parentOrgVO, orgMap);
-} else {
-return userOrgVO;
-}
-}*/
 }
 

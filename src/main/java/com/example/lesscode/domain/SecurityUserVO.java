@@ -6,7 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ import java.util.Map;
 @Data
 @ToString
 @EqualsAndHashCode
-public class SecurityUserVO implements UserDetails {
+public class SecurityUserVO  implements UserDetails {
 
     private static final long serialVersionUID = 1L;
     /**
@@ -99,22 +98,12 @@ public class SecurityUserVO implements UserDetails {
      */
     private List<GrantedAuthority> authorities;
 
+
+
     public void setAuthorities(List<GrantedAuthority> authorities) {
 		this.authorities = authorities;
 	}
 
-	/**
-     * 
-     * <p><b>用户拥有的权限(角色)</b></p>
-     * @author Chao.yy #2018年3月6日 下午5:41:22 
-     * @version V1.0
-     * @return 
-     * @see UserDetails#getAuthorities()
-     */
-    @Override
-    public Collection<GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
 
     /**
      *

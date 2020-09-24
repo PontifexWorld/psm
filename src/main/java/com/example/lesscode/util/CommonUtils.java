@@ -16,11 +16,6 @@ import java.util.*;
  */
 public class CommonUtils {
 
-    /*public static String stringFormat(String target, Object... source) {
-        StringExpression expression = StringFormatter.format(target, source);
-        return expression.getValue();
-    }*/
-
     public static Date dateFormat(String dateStr) {
 
         SimpleDateFormat mt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

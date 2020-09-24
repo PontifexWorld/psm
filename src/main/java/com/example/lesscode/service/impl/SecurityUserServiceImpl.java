@@ -1,6 +1,7 @@
 package com.example.lesscode.service.impl;
 
 import com.example.lesscode.dao.SecurityUserDao;
+import com.example.lesscode.dao.UserOrgDao;
 import com.example.lesscode.domain.SecurityUserVO;
 import com.example.lesscode.domain.UserOrgVO;
 import com.example.lesscode.service.UserOrgService;
@@ -32,9 +33,9 @@ public abstract class SecurityUserServiceImpl implements UserDetailsService {
     private SecurityUserDao dao;
     @Autowired
     private UserOrgService orgService;
+
     @Resource(name = "redisTemplate")
     private RedisTemplate<String, Object> redisTemplate;
-
     /**
      * <p><b>Spring security 权限验证需要使用该方法获取用户信息</b></p>
      *
@@ -47,19 +48,8 @@ public abstract class SecurityUserServiceImpl implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        String failureKey = "AUTHENTICATION:FAILURE:" + username;
-        // 查询失败次数
-//        if (redisTemplate.hasKey(failureKey)) {
-//            BoundValueOperations<String, Object> boundValueOperations = redisTemplate.boundValueOps(failureKey);
-//            int failureTimes = (int) boundValueOperations.get();
-//            if (failureTimes >= 5) {
-//                throw new CustomAuthenticationException("密码连续错误次数过多，请在30分钟后重试！");
-//            }
-//        }
-
         // 查询用户信息
         SecurityUserVO securityUserVO = getUser(username);
-
         if (securityUserVO != null) {
             List<String> grantedAuthorities = dao.queryRoleByUserId(securityUserVO.getId());
             List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(grantedAuthorities.size());
@@ -76,6 +66,7 @@ public abstract class SecurityUserServiceImpl implements UserDetailsService {
                     securityUserVO.setOrgTree(orgService.getOrgTree(securityUserVO.getOrgId(), orgMap));
                 }
             }
+
             return securityUserVO;
         } else {
             throw new UsernameNotFoundException("该用户名不存在");
