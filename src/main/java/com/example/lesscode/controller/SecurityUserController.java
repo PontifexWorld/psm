@@ -6,10 +6,10 @@ package com.example.lesscode.controller;
  * @author Chao.yy #2019年9月13日 下午10:20:43
  * @version V1.0
  */
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.example.lesscode.domain.SecurityUserVO;
 import com.example.lesscode.service.LoginLogService;
 import com.example.lesscode.util.IPUtil;
-import net.logstash.logback.encoder.org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundValueOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -93,7 +93,6 @@ public class SecurityUserController {
                     // 获取用户登录的真实IP
                     String remoteHost = IPUtil.getRemoteHost(request);
                     SecurityUserVO securityUserVO = (SecurityUserVO) auth2Authentication.getPrincipal();
-//                    logService.saveLoginLog(requestURL, securityUserVO.getUsername(), remoteHost, 2);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

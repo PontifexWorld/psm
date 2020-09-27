@@ -72,17 +72,21 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	 * <b>声明不需要权限验证的资源</b>
 	 * </p>
 	 *
+     * /captcha/smsCode 图片验证码
+     * /captcha/image 图片
+     * /oauth/sms  短信
+     * /druid/**  druid 监控页面
+     *
 	 * @author Chao.yy # 2018年06月19日 下午4:34:28
 	 * @version V1.0
 	 * @param web
 	 * @throws Exception
-	 *
 	 */
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// 忽略/error页面的拦截验证
 		web.ignoring()
-                .antMatchers("/captcha/smsCode/**","/captcha/image","/oauth/sms");
+                .antMatchers("/captcha/smsCode/**","/captcha/image","/oauth/sms","/druid/**");
 	}
 
 
