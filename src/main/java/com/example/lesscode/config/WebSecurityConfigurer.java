@@ -86,7 +86,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		// 忽略/error页面的拦截验证
 		web.ignoring()
-                .antMatchers("/captcha/smsCode/**","/captcha/image","/oauth/sms","/druid/**");
+                .antMatchers("/captcha/smsCode/**","/code/image","/oauth/sms","/druid/**");
 	}
 
 

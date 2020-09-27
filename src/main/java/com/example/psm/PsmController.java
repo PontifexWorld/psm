@@ -1,5 +1,6 @@
 package com.example.psm;
 
+import com.example.lesscode.domain.UserOrgVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +41,10 @@ public class PsmController {
         return "执行完成";
     }
 
+    @RequestMapping(value = "oms")
+    public String psmOms(){
 
+        return "";
+    }
 
 }

@@ -13,9 +13,10 @@ spring:
     static-path-pattern: /**
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.104.1.63:3306/mds?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://192.168.56.1:3306/mds?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
-    password: Kaisen2018?
+    #password: Kaisen2018?
+    password: 123456
     platform: mysql                               # 数据库类型
     type: com.alibaba.druid.pool.DruidDataSource  # 指定数据源类型
     ########## 连接池 配置 ##########
@@ -85,10 +86,15 @@ spring:
         allow: 127.0.0.1           # 允许访问的地址，如果allow没有配置或者为空，则允许所有访问
         deny:                      # 黑名单
   redis:
-    host: 127.0.0.1
+    host: 192.168.56.101
     port: 6379
-    password:
-
+    password: 123456
+# rabbitmq
+  rabbitmq:
+    host: 192.168.56.101
+    username: guest
+    password: guest
+    virtualHost: psm
 logging.level.org.springframework.security: DEBUG
 
 
