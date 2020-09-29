@@ -178,6 +178,13 @@
             <artifactId>junit</artifactId>
         </dependency>
 
+        <!--forest Http客户端框架-->
+        <dependency>
+            <groupId>com.dtflys.forest</groupId>
+            <artifactId>spring-boot-starter-forest</artifactId>
+            <version>1.4.11</version>
+        </dependency>
+
         <!--ELK日志系统中需要-->
 <!--        <dependency>-->
 <!--            <groupId>net.logstash.logback</groupId>-->
