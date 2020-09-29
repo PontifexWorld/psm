@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 /**
  * @author lsy
  * @version 1.0
@@ -42,9 +45,12 @@ public class PsmController {
     }
 
     @RequestMapping(value = "oms")
-    public String psmOms(){
-
-        return "";
+    public OrderDTO psmOms(){
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setCreateTime(LocalDateTime.now());
+        orderDTO.setUpdateTime(new Date());
+        System.out.println(orderDTO.toString());
+        return orderDTO;
     }
 
 }
