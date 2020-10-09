@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Hashtable;
 
 /**
  * @author lsy
@@ -25,6 +27,7 @@ public class PsmController {
         System.out.println("进入控制层");
         return "success";
     }
+
 
     @RequestMapping(value = "oom")
     public String psmOom(){
@@ -52,5 +55,17 @@ public class PsmController {
         System.out.println(orderDTO.toString());
         return orderDTO;
     }
+
+    public static void main(String[] args) {
+        HashMap map = new HashMap();
+        Hashtable table = new Hashtable<>();
+        int a = 60;
+        int b = 3;
+        System.out.println(~a);
+        System.out.println(a|=b);
+        System.out.println(a&=b);
+        System.out.println(a^=b);
+    }
+
 
 }

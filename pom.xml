@@ -182,7 +182,7 @@
         <dependency>
             <groupId>com.dtflys.forest</groupId>
             <artifactId>spring-boot-starter-forest</artifactId>
-            <version>1.4.11</version>
+            <version>1.4.12</version>
         </dependency>
 
         <!--ELK日志系统中需要-->
