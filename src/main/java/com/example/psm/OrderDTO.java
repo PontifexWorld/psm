@@ -19,5 +19,4 @@ public class OrderDTO {
 
     private Date updateTime;
 
-
 }

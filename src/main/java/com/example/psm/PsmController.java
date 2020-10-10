@@ -1,5 +1,7 @@
 package com.example.psm;
 
+import com.example.aspect.domain.ResultVO;
+import com.example.aspect.log.OperLog;
 import com.example.lesscode.domain.UserOrgVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,8 +38,7 @@ public class PsmController {
             logger.info("logger info " +i);
             try {
                 for (int j = 0; j < 10; j++) {
-                   String sa = new String();
-                   sa = "123123";
+                   String sa = "123123";
                 }
                 Thread.sleep(1000*2);
                 logger.info("剩余执行个数{}",50000-i);
@@ -48,12 +49,21 @@ public class PsmController {
     }
 
     @RequestMapping(value = "oms")
-    public OrderDTO psmOms(){
+    @OperLog(operModul = "測試model",operType = "添加信息",operDesc = "測試數據信息")
+    public User psmOms(){
         OrderDTO orderDTO = new OrderDTO();
         orderDTO.setCreateTime(LocalDateTime.now());
         orderDTO.setUpdateTime(new Date());
         System.out.println(orderDTO.toString());
-        return orderDTO;
+        User user = new User();
+        if (user.getId() == null) {
+            throw new NullPointerException();
+        }
+        user.setId(1L);
+        user.setAccount("12345678");
+        user.setPassword("12345678");
+        user.setEmail("123@qq.com");
+        return user;
     }
 
     public static void main(String[] args) {

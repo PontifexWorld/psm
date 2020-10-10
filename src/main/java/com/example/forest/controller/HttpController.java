@@ -24,7 +24,6 @@ public class HttpController {
         return myClient.request(forestUrl,token);
     }
 
-
     @RequestMapping(value = "method1")
     public Map method1() {
         System.out.println("---method1--");

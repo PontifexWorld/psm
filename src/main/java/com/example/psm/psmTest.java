@@ -3,6 +3,9 @@ package com.example.psm;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+
 /**
  * @author lsy
  * @version 1.0
@@ -15,6 +18,7 @@ public class psmTest {
 
     public static void main(String[] args) {
         Long L1 = System.currentTimeMillis();
+        HashMap map = new HashMap();
 
         for (int i = 0; i < 50000 ; i++) {
             logger.trace("logger.trace"+i);
@@ -31,7 +35,6 @@ public class psmTest {
         }
         logger.info("打印结束一共耗时{}时间",System.currentTimeMillis()-L1);
         logger.info("操作人:{},打印结束耗时时长:{}","小院子",System.currentTimeMillis()-L1);
-
     }
 
 

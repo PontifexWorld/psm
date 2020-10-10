@@ -19,15 +19,7 @@ public interface MyClient {
     String request(@DataVariable("forestUrl") String forestUrl,@DataVariable("token") String token);
 
 
-
-    @Request(
-            url = "https://www.baidu.com/",
-            type = "get",
-            dataType = "json"
-    )
-    String simplePostRequest();
-
-
     @Get(url = "http://ditu.amap.com/service/regeo?longitude=${0}&latitude=${1}")
     Map getLocation(String longitude, String latitude);
+
 }
