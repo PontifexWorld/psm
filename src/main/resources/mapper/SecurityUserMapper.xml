@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.lesscode.dao.SecurityUserDao">
-    <sql id="tableName">MS_AUTH_USER</sql>
-    <sql id="userRoleTableName">MS_AUTH_USER_ROLE</sql>
-    <sql id="orgTableName">MS_AUTH_ORG</sql>
+    <sql id="tableName">ms_auth_user</sql>
+    <sql id="userRoleTableName">ms_auth_user_role</sql>
+    <sql id="orgTableName">ms_auth_org</sql>
 
     <sql id="baseColumnList">
          ID,
