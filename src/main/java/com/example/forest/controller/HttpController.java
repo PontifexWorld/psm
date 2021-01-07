@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Map;
 @RequestMapping(value = "httpController")
 public class HttpController {
 
-    @Autowired
+    @Resource
     private MyClient myClient;
 
     @RequestMapping(value = "method")
@@ -28,5 +29,12 @@ public class HttpController {
     public Map method1() {
         System.out.println("---method1--");
         return myClient.getLocation("121.475078", "31.223577");
+    }
+
+
+    @RequestMapping(value = "fund")
+    public String methodFund(String url) {
+
+        return myClient.methodFund(url);
     }
 }

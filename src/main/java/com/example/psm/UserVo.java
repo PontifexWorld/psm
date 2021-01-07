@@ -1,22 +1,21 @@
 package com.example.psm;
 
 import lombok.Data;
-import lombok.experimental.Accessors;
 
 /**
  * @author lsy
  * @version 1.0
- * @date 2020-10-10 21:19
+ * @date 2020-11-10 13:04
  **/
 @Data
-@Accessors(chain = true)
-public class User {
+public class UserVo {
 
     private Long id;
 
-    private String account;
+    private String name;
 
     private String password;
 
     private String email;
+
 }
